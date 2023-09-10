@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+//database connection
+require("./model/index");
+
+
 app.set('view engine', 'ejs');
 
 app.use(express.json());
