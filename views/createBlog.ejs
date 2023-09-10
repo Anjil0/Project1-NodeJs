@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ff6600;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #444444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+           justify-content: center;
+
+        }
+
+        button:hover {
+            background-color: #1b1b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CSM</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="/">HomePage</a>
+        <a href="/createBlog">CreatePage</a>
+    </div>
+    <div class="container">
+        <form action="/createBlog" method="post">
+            <h2>Title</h2>
+            <input type="text" placeholder="Enter your title" name = "Title" required >
+
+            <h2>Subtitle</h2>
+            <input type="text" placeholder="Enter your subtitle" name = "Subtitle" required>
+
+            <h2>Description</h2>
+            <textarea placeholder="Enter your description" name = "Description" rows="4"  required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
