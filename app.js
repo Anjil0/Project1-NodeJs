@@ -5,14 +5,18 @@ const app = express();
 //database connection
 require("./model/index");
 
+//to use ejs file we set this
 app.set("view engine", "ejs");
 
+// to get data from website user entered we use this
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  // res.send("WELCOME TO THE HOMEPAGE")
-  res.render("Blog");
+app.get("/", async (req, res) => {
+  // to get data from database
+  const allblogs = await blogs.findAll();
+  // ejs file and sending data to file
+  res.render("Blog", { allblogs: allblogs });
 });
 
 app.get("/createBlog", (req, res) => {
@@ -26,13 +30,28 @@ app.post("/createBlog", async (req, res) => {
   // const content = req.body.subTitle;
   // const author = req.body.description;
   const { title, subTitle, description } = req.body;
-  res.send("Blog Created!");
+
   //   database ma store garney, kei operation huda await + async halney
   await blogs.create({
     title: title,
     subTitle: subTitle,
     description: description,
   });
+  res.redirect("/");
+});
+
+//single page blogg
+app.get("/blog/:id", async (req, res) => {
+  const id = req.params.id;
+  const singleBlog = await blogs.findAll({ where: { id: id } });
+  // console.log(singleBlog);
+  res.render("soloBlog", { singleBlog: singleBlog });
+});
+
+app.get("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  await blogs.destroy({ where: { id: id } });
+  res.redirect("/");
 });
 
 app.listen(3000, () => {

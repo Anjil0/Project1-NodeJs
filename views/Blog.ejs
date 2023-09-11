@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSM Page</title>
     <style>
         /* Internal CSS */
@@ -79,6 +80,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1>CSM</h1>
@@ -86,33 +88,24 @@
 
     <div class="navbar">
         <a href="/">HomePage</a>
-        <a href="/createBlog">CreatePage</a>
+        <a href="/createBlog">CreateBlog</a>
     </div>
 
     <div class="card-container">
-        <div class="card">
-            <div class="card-title">Card 1</div>
-            <div class="card-subtitle">Subtitle 1</div>
-            <div class="card-description">
-                This is an attractive card with a title, subtitle, and description.
-            </div>
-        </div>
+        <% if (allblogs.length==0) {%>
+            <h1>! No Blogs Found !</h1>
+            <% }else{ %>
+                <% allblogs.forEach((eachBlog)=>{ %>
+                    <div class="card">
+                        <div class="card-title"><%- eachBlog.title%></div>
+                        <div class="card-subtitle"><%- eachBlog.subTitle %></div>
+                        <div class="card-description"><%- eachBlog.description%></div>
+                        <a href="/blog/<%-eachBlog.id%>">Read More</a>
+                    </div>
+                    <% }) %>
+                        <%}%>
 
-        <div class="card">
-            <div class="card-title">Card 2</div>
-            <div class="card-subtitle">Subtitle 2</div>
-            <div class="card-description">
-                This is another attractive card with a title, subtitle, and description.
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">Card 3</div>
-            <div class="card-subtitle">Subtitle 3</div>
-            <div class="card-description">
-                This is a third attractive card with a title, subtitle, and description.
-            </div>
-        </div>
     </div>
 </body>
+
 </html>
