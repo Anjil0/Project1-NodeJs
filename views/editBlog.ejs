@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Page</title>
+    <title>Create Content</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +10,6 @@
             margin: 0;
             padding: 0;
         }
-
 
         .header {
             background-color: #333;
@@ -45,42 +42,42 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 20px auto;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
         }
 
-        .blog-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        
-        .blog-subtitle {
+        h2 {
             font-size: 20px;
-            color: #555;
             margin-bottom: 10px;
         }
 
-        .blog-description {
-            font-size: 16px;
-            line-height: 1.5;
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        .container a{
+        input[type="text"],
+        textarea {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .container a {
             color: #c5682e;
             text-decoration: none;
         }
-        .container a:hover{
+
+        .container a:hover {
             color: #0ec2a1;
         }
 
-
         button {
-            transition: color 0.3s;
             background-color: #444444;
             color: #fff;
             padding: 10px 20px;
@@ -92,7 +89,7 @@
         }
 
         button:hover {
-            background-color: #222323;
+            background-color: #1b1b1b;
         }
     </style>
 </head>
@@ -106,15 +103,21 @@
         <a href="/">HomePage</a>
         <a href="/createBlog">CreateBlog</a>
     </div>
-
     <div class="container">
-        <div class="blog-title"><%- singleBlog[0].title%></div>
-        <div class="blog-subtitle"><%- singleBlog[0].subTitle%></div>
-        <div class="blog-description"><%- singleBlog[0].description%></div>
-        <button><a href="/delete/<%- singleBlog[0].id %>">Delete</a> </button>
-        <button><a href="/edit/<%- singleBlog[0].id %>">Edit</a> </button>
-    </div>
+        <form action="/editBlog/<%- blog[0].id%>" method="post">
+            <h2>Title</h2>
+            <input type="text" value="<%- blog[0].title%>" name="title" required>
 
+            <h2>Subtitle</h2>
+            <input type="text" value="<%- blog[0].subTitle%>" name="subTitle" required>
+
+            <h2>Description</h2>
+            <textarea name="description" rows="4" required><%- blog[0].description%></textarea>
+
+            <button type="submit">Save Blog</button>
+            <button><a href="/">Cancel</a> </button>
+        </form>
+    </div>
 </body>
 
 </html>
