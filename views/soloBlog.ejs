@@ -13,37 +13,6 @@
             padding: 0;
         }
 
-
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 8px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 36px;
-            margin: 0;
-        }
-
-        .navbar {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .navbar a:hover {
-            color: #ff6600;
-        }
-
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -98,14 +67,7 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1>CSM</h1>
-    </div>
-
-    <div class="navbar">
-        <a href="/">HomePage</a>
-        <a href="/createBlog">CreateBlog</a>
-    </div>
+    <%- include("components/navbar") %>
 
     <div class="container">
         <div class="blog-title"><%- singleBlog[0].title%></div>
@@ -114,7 +76,7 @@
         <button><a href="/delete/<%- singleBlog[0].id %>">Delete</a> </button>
         <button><a href="/edit/<%- singleBlog[0].id %>">Edit</a> </button>
     </div>
-
+    <%- include("components/Footer") %>
 </body>
 
 </html>

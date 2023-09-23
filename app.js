@@ -8,6 +8,9 @@ require("./model/index");
 //to use ejs file we set this
 app.set("view engine", "ejs");
 
+// nodejs laii css file haru extrernal use garna diney
+app.use(express.static("public/"));
+
 // to get data from website user entered we use this
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
